@@ -1,0 +1,125 @@
+import com.github.spotbugs.SpotBugsTask
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'com.diffplug.spotless:spotless-plugin-gradle:3.22.0'
+        classpath 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.6.8'
+    }
+}
+
+allprojects {
+    group 'com.wilmol'
+    version = '1.0.0'
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // Spotless (code formatting/linting)
+    apply plugin: 'com.diffplug.gradle.spotless'
+    spotless {
+        java {
+            removeUnusedImports()
+            googleJavaFormat()
+        }
+    }
+
+    // Checkstyle (static analysis - code quality/style)
+    apply plugin: 'checkstyle'
+    checkstyle {
+        toolVersion = '8.21'
+        configFile = rootProject.file('gradle/checkstyle/checkstyle.xml')
+        maxErrors = 0
+        maxWarnings = 0
+        ignoreFailures = false
+    }
+
+    // SpotBugs (static analysis - find possible bugs, performance issues etc.)
+    apply plugin: 'com.github.spotbugs'
+    spotbugs {
+        toolVersion = '3.1.12'
+        effort = 'max'
+        reportLevel = 'low'
+        ignoreFailures = false
+    }
+    tasks.withType(SpotBugsTask) {
+        reports {
+            html.enabled = true
+            xml.enabled = false
+        }
+    }
+
+    // Tests
+    tasks.withType(Test) {
+        // run tests in parallel, assumes they're threadsafe
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+        // use JUnit 5 engine
+        useJUnitPlatform()
+        testLogging {
+            events = ['failed', 'skipped']
+            // log the full failure messages
+            exceptionFormat = 'full'
+            showExceptions = true
+            showCauses = true
+            showStackTraces = true
+            // log the overall results (based on https://stackoverflow.com/a/36130467/6122976)
+            afterSuite { desc, result ->
+                if (!desc.parent) { // will match the outermost suite
+                    println("Results: ${result.resultType} (${result.testCount} test${result.testCount > 1 ? "s" : ""}, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)")
+                }
+            }
+        }
+    }
+
+    // JaCoCo (code coverage reporting)
+    apply plugin: 'jacoco'
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+            html.enabled = true
+            csv.enabled = false
+        }
+    }
+    check.dependsOn jacocoTestReport
+
+    // pin dependency versions
+    ext {
+        junitVersion = '5.5.2'
+        truthVersion = '1.0'
+        mockitoVersion = '3.1.0'
+
+        guavaVersion = '28.1-jre'
+        log4jVersion = '2.12.1'
+    }
+
+    // dependency cleanup, exclusions and resolutions
+    configurations.all {
+        exclude group: "org.assertj" // using truth instead
+
+        resolutionStrategy {
+            force "com.google.guava:guava:$guavaVersion" // so the android version isn't pulled in
+        }
+    }
+
+    dependencies {
+        implementation "com.google.guava:guava:$guavaVersion"
+        implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
+        implementation 'com.google.code.findbugs:annotations:3.0.1'
+
+        testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+        testImplementation "com.google.truth:truth:$truthVersion"
+        testImplementation "com.google.truth.extensions:truth-java8-extension:$truthVersion"
+        testImplementation "org.mockito:mockito-core:$mockitoVersion"
+        testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+    }
+}

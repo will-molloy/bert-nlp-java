@@ -1,0 +1,6 @@
+[![Build Status](https://travis-ci.com/wilmol/bert-nlp-java.svg?branch=master)](https://travis-ci.com/wilmol/bert-nlp-java)
+[![codecov](https://codecov.io/gh/wilmol/bert-nlp-java/branch/master/graph/badge.svg)](https://codecov.io/gh/wilmol/bert-nlp-java)
+[![GitHub issues](https://img.shields.io/github/issues/wilmol/bert-nlp-java.svg)](https://github.com/wilmol/bert-nlp-java/issues)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/wilmol/bert-nlp-java.svg)](https://github.com/wilmol/bert-nlp-java/pulls/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/wilmol/bert-nlp-java/graphs/commit-activity)
+[![GitHub license](https://img.shields.io/github/license/wilmol/bert-nlp-java.svg)](https://github.com/wilmol/bert-nlp-java/blob/master/LICENSE)
