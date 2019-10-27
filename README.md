@@ -4,6 +4,11 @@
 
 # BERT NLP Java
 
+## What's included
+* Java code to read and process a BERT TensorFlow model
+* Gradle tasks and Java code to automate the training process
+* Interactive examples
+
 ## Requirements
 * Java 8
 
@@ -12,11 +17,6 @@ Additionally, if you want to train models:
 * A CUDA GPU (i.e. NVIDIA), with the various software installed
   * Just follow https://www.tensorflow.org/install/gpu
   * Alternatively, access to a Google Cloud TPU 
-
-## What's included
-* Java code to read and process a BERT TensorFlow model
-* Gradle tasks and Java code to automate the training process
-* Interactive examples
 
 ## Supported NLP tasks
 * [Text classification](#text-classification)

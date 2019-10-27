@@ -100,6 +100,7 @@ subprojects {
 
         guavaVersion = '28.1-jre'
         log4jVersion = '2.12.1'
+        tensorflowVersion = '1.13.1'
     }
 
     // dependency cleanup, exclusions and resolutions

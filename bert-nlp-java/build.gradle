@@ -1,0 +1,4 @@
+dependencies {
+    implementation "org.tensorflow:tensorflow:$tensorflowVersion"
+    implementation "org.tensorflow:proto:$tensorflowVersion"
+}
