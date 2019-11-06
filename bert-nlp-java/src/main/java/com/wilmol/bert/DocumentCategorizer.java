@@ -54,7 +54,7 @@ public class DocumentCategorizer {
       value = "RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE",
       justification = "Not just a nullcheck")
   public ImmutableList<LabelAndScore> categorize(String text) {
-    log.debug("Received: {}", text);
+    log.traceEntry("categorize(text={})", text);
     Session.Runner runner = model.session().runner();
 
     Features features = featureExtractor.extractFeatures(text);
@@ -73,10 +73,11 @@ public class DocumentCategorizer {
         float[][] template = new float[1][model.labels().size()];
         float[][] copied = outputTensor.copyTo(template);
 
-        return IntStream.range(0, copied[0].length)
-            .mapToObj(i -> new LabelAndScore(model.labels().get(i), copied[0][i]))
-            .sorted(Comparator.reverseOrder())
-            .collect(toImmutableList());
+        return log.traceExit(
+            IntStream.range(0, copied[0].length)
+                .mapToObj(i -> new LabelAndScore(model.labels().get(i), copied[0][i]))
+                .sorted(Comparator.reverseOrder())
+                .collect(toImmutableList()));
       }
     }
   }

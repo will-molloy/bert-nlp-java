@@ -46,7 +46,7 @@ public class FeatureExtractor {
    * @return extracted features
    */
   public Features extractFeatures(String text) {
-    log.debug("Received: {}", text);
+    log.traceEntry("extractFeatures(text={})", text);
     List<String> tokens = tokenizer.tokenize(text);
     verify(
         tokens.size() <= model.maxSeqLength(),
@@ -60,12 +60,13 @@ public class FeatureExtractor {
       inputMasks[i] = 1;
     }
 
-    return Features.newBuilder()
-        .putFeature("segment_ids", createFeatureFrom(new long[model.maxSeqLength()]))
-        .putFeature("label_ids", createFeatureFrom(1))
-        .putFeature("input_ids", createFeatureFrom(inputIds))
-        .putFeature("input_mask", createFeatureFrom(inputMasks))
-        .build();
+    return log.traceExit(
+        Features.newBuilder()
+            .putFeature("segment_ids", createFeatureFrom(new long[model.maxSeqLength()]))
+            .putFeature("label_ids", createFeatureFrom(1))
+            .putFeature("input_ids", createFeatureFrom(inputIds))
+            .putFeature("input_mask", createFeatureFrom(inputMasks))
+            .build());
   }
 
   private static Feature createFeatureFrom(long... values) {

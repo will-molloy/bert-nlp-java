@@ -40,6 +40,12 @@ public class Model implements AutoCloseable {
    * @throws IllegalArgumentException if loading the model fails
    */
   public Model(String modelPath, int maxSeqLength, String labelsPath, String vocabPath) {
+    log.traceEntry(
+        "Model(modelPath={}, maxSeqLength={}, labelsPath={}, vocabPath={})",
+        modelPath,
+        maxSeqLength,
+        labelsPath,
+        vocabPath);
     log.debug("Loading model and creating session");
     try {
       // TODO(wilmol) use Resources#getResource here?
