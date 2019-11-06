@@ -1,18 +1,23 @@
-package com.wilmol.bert.tokenizer;
+package com.wilmol.bert;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
-import com.wilmol.bert.Model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
- * Word piece tokenizer. Based on: <a
+ * Wordpiece tokenizer implementation.
+ *
+ * <p>Based on: <a
  * href=https://github.com/google-research/bert/blob/master/tokenization.py>https://github.com/google-research/bert/blob/master/tokenization.py</a>
  *
+ * @author LaurenceTews
  * @author wilmol
  */
 public class WordPieceTokenizer implements Tokenizer {
@@ -25,6 +30,8 @@ public class WordPieceTokenizer implements Tokenizer {
 
   private static final int MAX_INPUT_CHARS_PER_WORD = 30;
 
+  private final Logger log = LogManager.getLogger();
+
   private final Model model;
 
   public WordPieceTokenizer(Model model) {
@@ -32,20 +39,20 @@ public class WordPieceTokenizer implements Tokenizer {
   }
 
   /**
-   * Tokenizes a piece of text into its word pieces.
+   * Tokenizes the text using word piece tokenization.
    *
-   * <p>This uses a greedy longest-match-first algorithm to perform tokenization using the given
-   * vocabulary.
+   * <p>Note: if the input text (number of words) exceeds the {@code max_seq_length} of the model
+   * the result will be truncated on the right.
    *
-   * <p>Note if the given text produces more tokens than the models max sequence length, it'll be
-   * truncated on the right.
-   *
-   * @param text A single token or whitespace separated tokens.
-   * @return A list of wordpiece tokens.
+   * @param text a single token or whitespace separated tokens
+   * @return list of wordpiece tokens
    */
   @Override
   public ImmutableList<String> tokenize(String text) {
-    String splitText = splitOnPunctuation(text.trim().toLowerCase(Locale.US));
+    log.debug("Received: {}", text);
+    checkArgument(model.maxSeqLength() > 2);
+
+    String splitText = splitOnPunctuation(text.toLowerCase(Locale.US));
 
     List<String> outputTokens = new ArrayList<>();
 
@@ -61,6 +68,7 @@ public class WordPieceTokenizer implements Tokenizer {
           break outer;
         }
       } else {
+        // TODO(wilmol) some strange things here... can simplify
         StringBuilder chars = new StringBuilder(token);
         int start = 0;
 
@@ -101,6 +109,7 @@ public class WordPieceTokenizer implements Tokenizer {
 
     outputTokens.add(SEP_TOKEN);
 
+    log.debug("Result: {}", outputTokens);
     return ImmutableList.copyOf(outputTokens);
   }
 

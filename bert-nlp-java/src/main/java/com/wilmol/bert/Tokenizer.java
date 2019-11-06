@@ -1,4 +1,4 @@
-package com.wilmol.bert.tokenizer;
+package com.wilmol.bert;
 
 import java.util.List;
 
