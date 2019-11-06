@@ -81,23 +81,28 @@ public class DocumentCategorizer {
     }
   }
 
-  /** Represents a label and its score. Immutable. */
+  /**
+   * Represents a label and its score.
+   *
+   * <p>This is an immutable value class.
+   */
   public static final class LabelAndScore implements Comparable<LabelAndScore> {
+
     private final String label;
 
-    private final double predictionScore;
+    private final float predictionScore;
 
-    private LabelAndScore(String label, double predictionScore) {
+    private LabelAndScore(String label, float predictionScore) {
       this.label = checkNotNull(label);
       checkArgument(
-          Range.closed(0d, 1d).contains(predictionScore),
+          Range.closed(0f, 1f).contains(predictionScore),
           "Expected prediction score between 0 and 1.");
       this.predictionScore = predictionScore;
     }
 
     @Override
     public int compareTo(LabelAndScore that) {
-      return Double.compare(this.predictionScore, that.predictionScore);
+      return Float.compare(this.predictionScore, that.predictionScore);
     }
 
     @Override
@@ -109,7 +114,7 @@ public class DocumentCategorizer {
         return false;
       }
       LabelAndScore that = (LabelAndScore) o;
-      return Double.compare(that.predictionScore, predictionScore) == 0
+      return Float.compare(that.predictionScore, predictionScore) == 0
           && Objects.equals(label, that.label);
     }
 
@@ -130,7 +135,7 @@ public class DocumentCategorizer {
       return label;
     }
 
-    public double predictionScore() {
+    public float predictionScore() {
       return predictionScore;
     }
   }
