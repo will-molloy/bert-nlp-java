@@ -1,27 +1,72 @@
-0	0	a	Order me a cab
-1	0	a	Book a cab
-2	0	a	Order me a taxi
-3	0	a	Book a taxi
-4	0	a	Get me a cab
-5	0	a	Order a cab
-6	0	a	Get me a taxi
-7	0	a	Order a taxi
-8	0	a	Send a cab to 123 Mountain Drive
-9	0	a	Pick me up at 456 Queen Street
-10	1	a	Cancel my taxi
-11	1	a	Cancel my cab
-12	1	a	Cancel my order
-13	2	a	Where is my taxi ?
-14	2	a	Where is my cab ?
-15	2	a	How far away is my taxi ?
-16	2	a	How far away is my cab ?
-17	2	a	How long until my cab is here ?
-18	2	a	How long until my taxi is here ?
-19	3	a	My address is 173 Essex Drive
-20	3	a	The address is 1407 Graymalkin Lane , Salem Center
-21	3	a	52 Festive Road
-22	3	a	it's 6151 Richmond Street
-23	3	a	The pick up is at 740 Evergreen Terrace
-24	3	a	890 Fifth Avenue
-25	3	a	The address is 13 China Ave
-26	3	a	136 River Road
+0	0	a	What's the weather look like
+1	0	a	Is it raining
+2	0	a	what's the temperature
+3	0	a	show me current conditions
+4	0	a	how hot is it
+5	0	a	how cold is it
+6	0	a	is it snowing
+7	0	a	is it raining
+8	0	a	is it sunny
+9	0	a	is it cloudy
+10	0	a	is it raining in Detroit
+11	0	a	How is Denver today
+12	0	a	is Chicago cold
+13	0	a	is Miami hot
+14	0	a	show me the current conditions
+15	0	a	what's the temperature in new york
+16	0	a	show me current conditions for san francisco
+17	0	a	what's the weather look like in Chicago
+18	0	a	is it raining in Seattle
+19	0	a	what's the temperature in New York
+20	0	a	show me current conditions for Boston
+21	0	a	How hot is it in Miami
+22	0	a	how cold is it Anchorage
+23	0	a	is it snowing in Denver
+24	0	a	show me the current conditions for Detroit
+25	0	a	show me current conditions for boston
+26	0	a	How hot is it in miami
+27	0	a	how cold is it anchorage
+28	0	a	is it snowing in denver
+29	0	a	show me the current conditions for detroit
+30	1	a	will it rain tomorrow
+31	1	a	how dos the weather look for Thursday
+32	1	a	is is going to snow this week
+33	1	a	show me the forecast
+34	1	a	what's the five day forecast
+35	1	a	will it rain this week
+36	1	a	how does this week look in Los Angelos
+37	1	a	wow does it look for Monday
+38	1	a	will it rain on Friday
+39	1	a	is it going to be hot Wednesday
+40	1	a	how does the rest of the week look
+41	1	a	will it rain tomorrow in Munich
+42	1	a	how dos the weather look for this Thursday in Boston
+43	1	a	is is going to snow this week in  Chicago
+44	1	a	show me the forecast for Denver
+45	1	a	Show me the weather for Salt Lake City this Tuesday
+46	1	a	what's the five day forecast for Detroit
+47	1	a	how does it look for this Monday in New York
+48	1	a	will it rain in Denver on Friday
+49	1	a	is it going to be hot in Boston this Wednesday
+50	1	a	how New York look the rest of the week look
+51	2	a	how does tonight look
+52	2	a	is it going to rain this afternoon
+53	2	a	is it going to snow in Detroit
+54	2	a	does it look like rain
+55	2	a	Does it look lie snow
+56	2	a	will it rain tonight
+57	2	a	how cold will it be this afternoon
+58	2	a	will it be cloudy
+59	2	a	is it going to be hot tonight
+60	2	a	will it rain this morning
+61	2	a	will it rain
+62	2	a	will is snow
+63	2	a	is it going to get warmer today
+64	2	a	How does tonight look in boston
+65	2	a	is it going to rain this afternoon in chicago
+66	2	a	will it rain this morning miami
+67	2	a	is it going to get warmer today houston
+68	2	a	how does tonight look in austin
+69	2	a	Is it going to rain this afternoon in san francisco
+70	2	a	will it rain this morning Seattle
+71	2	a	is it going to get warmer today Portland

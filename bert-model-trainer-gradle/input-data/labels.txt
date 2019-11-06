@@ -1,4 +1,3 @@
-0,OrderTaxi
-1,CancelTaxi
-2,WhereTaxi
-3,GaveAddress
+0,CurrentWeatherIntent
+1,FiveDayForecastIntent
+2,HourlyForecastIntent

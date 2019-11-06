@@ -5,9 +5,9 @@ import static com.google.common.truth.Truth.assertThat;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests.
+ * {@link Model} tests.
  *
- * <p>Uses the Taxi bot model built in the model-trainer module.
+ * <p>Uses the example model built in the `bert-model-trainer-gradle` module.
  *
  * @author wilmol
  */

@@ -49,7 +49,6 @@ public class WordPieceTokenizer implements Tokenizer {
    */
   @Override
   public ImmutableList<String> tokenize(String text) {
-    log.traceEntry("tokenize(text={})", text);
     checkArgument(model.maxSeqLength() > 2);
 
     String splitText = splitOnPunctuation(text.toLowerCase(Locale.US));
@@ -109,7 +108,7 @@ public class WordPieceTokenizer implements Tokenizer {
 
     outputTokens.add(SEP_TOKEN);
 
-    return log.traceExit(ImmutableList.copyOf(outputTokens));
+    return ImmutableList.copyOf(outputTokens);
   }
 
   private static String splitOnPunctuation(String text) {
