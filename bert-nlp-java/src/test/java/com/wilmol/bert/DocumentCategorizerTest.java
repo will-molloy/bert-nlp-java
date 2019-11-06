@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Document categorizer tests.
  *
- * <p>Uses a Taxi bot model built in the model-trainer example.
+ * <p>Uses the Taxi bot model built in the model-trainer module.
  *
  * @author wilmol
  */

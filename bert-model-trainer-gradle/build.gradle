@@ -1,0 +1,7 @@
+group 'com.wilmol'
+version '1.0.0'
+
+clean {
+    delete "bert-output"
+//    delete "pre-trained-model" TODO once its download is automated
+}

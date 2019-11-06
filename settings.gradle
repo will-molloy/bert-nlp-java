@@ -1,2 +1,3 @@
 rootProject.name = 'bert-nlp-java'
 include 'bert-nlp-java'
+include 'bert-model-trainer-gradle'

@@ -1,0 +1,27 @@
+1	1	a	Order me a cab
+2	1	a	Book a cab
+3	1	a	Order me a taxi
+4	1	a	Book a taxi
+5	1	a	Get me a cab
+6	1	a	Order a cab
+7	1	a	Get me a taxi
+8	1	a	Order a taxi
+9	1	a	Send a cab to 123 Mountain Drive
+10	1	a	Pick me up at 456 Queen Street
+11	2	a	Cancel my taxi
+12	2	a	Cancel my cab
+13	2	a	Cancel my order
+14	3	a	Where is my taxi ?
+15	3	a	Where is my cab ?
+16	3	a	How far away is my taxi ?
+17	3	a	How far away is my cab ?
+18	3	a	How long until my cab is here ?
+19	3	a	How long until my taxi is here ?
+20	4	a	My address is 173 Essex Drive
+21	4	a	The address is 1407 Graymalkin Lane , Salem Center
+22	4	a	52 Festive Road
+23	4	a	it's 6151 Richmond Street
+24	4	a	The pick up is at 740 Evergreen Terrace
+25	4	a	890 Fifth Avenue
+26	4	a	The address is 13 China Ave
+27	4	a	136 River Road

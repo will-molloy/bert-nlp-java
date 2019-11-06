@@ -6,8 +6,7 @@
 
 ## What's included
 * Java code to read and process a BERT TensorFlow model
-* Gradle tasks and Java code to automate the training process
-* Interactive examples
+* Gradle tasks to automate the training process
 
 ## Requirements
 * Java 8
@@ -19,19 +18,8 @@ Additionally, if you want to train models:
   * Alternatively, access to a Google Cloud TPU 
 
 ## Supported NLP tasks
-* [Text classification](#text-classification)
+* [Document categorization](bert-nlp-java/src/test/java/com/wilmol/bert/DocumentCategorizerTest.java)
 
 **WIP:**
 * Question answering
 * Named entity recognition (NER)
-
-## Text classification
-* AKA document classification
-* This assigns a label to a passage of text according to its content
-
-### Run example main class
-* Just run the following gradle task:
-
-### Training a model
-* Organise your training data as follows:
-  * 
